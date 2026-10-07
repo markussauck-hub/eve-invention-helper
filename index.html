@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EVE Invention Helper</title>
+<meta name="description" content="EVE Online: Datacores, Skills, Bauteile und Materialien für die Tech-II-Invention">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* LincolnSoft-Styleguide – identisch zur Desktop-Version */
+  :root {
+    --bg: #121417;
+    --surface: #1B1E22;
+    --glass: rgba(27, 30, 34, .80);
+    --surface-hi: #23272C;
+    --border: #2E333A;
+    --text: #E8EAED;
+    --muted: #8B929C;
+    --accent: #7FCFFF;
+    --accent-hi: #A6DEFF;
+    --accent-dim: #4259FF;
+    --on-accent: #0A0C0E;
+    --pos: #3DFFA2;
+    --neg: #FF4D6D;
+    --warn: #FFB547;
+    --pi: #B48CFF;
+    --ui: "Segoe UI", Inter, "Helvetica Neue", system-ui, sans-serif;
+    --mono: "Cascadia Mono", Consolas, "JetBrains Mono", ui-monospace, monospace;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.4 var(--ui); }
+  button, input, select { font: inherit; color: inherit; }
+
+  /* ---------- Weltraum-Hintergrund ---------- */
+  .nebula { position: fixed; inset: -10%; z-index: 0; pointer-events: none; filter: blur(40px); }
+  .nebula i { position: absolute; border-radius: 50%; display: block; }
+  .nebula .n1 { left: 4%;  top: -6%; width: 46vw; height: 42vh; background: radial-gradient(closest-side, rgba(34,58,150,.55), transparent); }
+  .nebula .n2 { left: 44%; top: -10%; width: 40vw; height: 34vh; background: radial-gradient(closest-side, rgba(70,160,225,.35), transparent); }
+  .nebula .n3 { left: 20%; top: 38%;  width: 70vw; height: 30vh; transform: rotate(-24deg); background: radial-gradient(closest-side, rgba(34,58,150,.45), transparent); }
+  .nebula .n4 { left: 58%; top: 52%;  width: 36vw; height: 36vh; background: radial-gradient(closest-side, rgba(88,62,170,.30), transparent); }
+  .nebula .n5 { left: -6%; top: 70%;  width: 44vw; height: 36vh; background: radial-gradient(closest-side, rgba(70,160,225,.22), transparent); }
+  #sky { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
+  .app { position: relative; z-index: 1; max-width: 1320px; margin: 0 auto; padding: 18px 20px 12px; min-height: 100vh; display: flex; flex-direction: column; }
+
+  header { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  header img { height: 52px; display: block; }
+  .brand { text-align: right; }
+  h1 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: .02em; }
+  .subtitle { color: var(--muted); font-size: 12px; }
+  .rule { height: 2px; background: var(--accent); margin: 10px 0 16px; box-shadow: 0 0 10px rgba(127,207,255,.55); }
+
+  main { display: grid; grid-template-columns: minmax(280px, 360px) 1fr; gap: 16px; flex: 1; align-items: start; }
+
+  /* ---------- Karten (Glas) ---------- */
+  .card {
+    background: var(--glass); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    padding: 10px 14px; min-width: 0;
+  }
+  .card h3 { margin: 0 0 6px; color: var(--accent); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; }
+  .hint { color: var(--muted); font-size: 12px; margin: 0 0 4px; }
+  .small { color: var(--muted); font-size: 11px; }
+
+  /* ---------- Blueprint-Liste ---------- */
+  .side { position: sticky; top: 12px; display: flex; flex-direction: column; height: calc(100vh - 150px); min-height: 420px; }
+  input[type=search], input[type=number], select {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 0;
+    padding: 8px 10px; outline: none; caret-color: var(--accent);
+  }
+  input:focus, select:focus { border-color: var(--accent); background: var(--surface-hi); }
+  #search { width: 100%; margin-bottom: 10px; }
+  #search::-webkit-search-cancel-button { filter: invert(.6); }
+  #list {
+    list-style: none; margin: 0; padding: 1px; border: 1px solid var(--border); background: rgba(18,20,23,.7);
+    overflow-y: auto; flex: 1; min-height: 160px; scrollbar-color: var(--surface-hi) transparent;
+  }
+  #list li { padding: 4px 8px; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #list li .from { color: var(--muted); }
+  #list li:hover { background: var(--surface-hi); }
+  #list li[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+  #list li[aria-selected="true"] .from { color: var(--on-accent); opacity: .7; }
+  #list .empty { color: var(--muted); cursor: default; }
+  #list .empty:hover { background: none; }
+  .listfoot { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; color: var(--muted); font-size: 12px; gap: 8px; }
+
+  /* ---------- Detail ---------- */
+  .detail { min-width: 0; }
+  .detail h2 { margin: 0; font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: .02em; }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; align-items: start; }
+  .card.wide { grid-column: 1 / -1; }
+
+  table { width: 100%; border-collapse: collapse; }
+  th { color: var(--muted); font: 700 10px var(--ui); text-transform: uppercase; letter-spacing: .04em; text-align: right; padding: 0 0 4px 12px; white-space: nowrap; }
+  th:first-child { text-align: left; padding-left: 0; }
+  td { padding: 3px 0 3px 12px; text-align: right; white-space: nowrap; vertical-align: middle; }
+  td:first-child { text-align: left; padding-left: 0; white-space: normal; }
+  tr.sep td { border-top: 1px solid var(--border); padding-top: 6px; }
+
+  .row { display: flex; align-items: center; gap: 12px; padding: 2px 0; min-height: 28px; }
+  .row .k { color: var(--muted); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .k { color: var(--muted); }
+  .v { font: 700 15px var(--mono); text-align: right; white-space: nowrap; }
+  .v.name { font: 600 14px var(--ui); overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  .v.best { color: var(--accent); font-size: 19px; }
+  .v.big { color: var(--accent); font-size: 17px; }
+  .v.dim { color: var(--muted); }
+  .nm { font-weight: 600; color: var(--text); }
+  .pos { color: var(--pos); }
+  .neg { color: var(--neg); }
+  .req { color: var(--muted); font-size: 12px; }
+  .lvl { width: 54px; text-align: center; font: 700 14px var(--mono); padding: 4px 4px 4px 8px; background: var(--surface-hi); }
+  .state { font: 700 14px var(--mono); width: 46px; text-align: right; }
+  #decryptor { min-width: 0; flex: 0 1 230px; padding: 6px 8px; }
+  .divider { border-top: 1px solid var(--border); margin: 8px 0 6px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 28px; }
+  .placeholder { color: var(--muted); padding: 2px 0; }
+  .foot { display: flex; align-items: center; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+  .foot .grow { flex: 1; }
+  .foot input[type=number] { width: 70px; padding: 4px 8px; font: 700 14px var(--mono); text-align: center; }
+
+  .tag { display: inline-block; margin-left: 6px; padding: 0 4px; font: 700 9px var(--ui); letter-spacing: .05em; vertical-align: 1px; border: 1px solid currentColor; }
+  .tag.S { color: var(--warn); }
+  .tag.P { color: var(--pi); }
+  .tag.K { color: var(--muted); }
+
+  input[type=checkbox] { accent-color: var(--accent); width: 15px; height: 15px; cursor: pointer; margin: 0; }
+
+  .btn-ghost {
+    background: transparent; border: 1px solid var(--border); color: var(--accent);
+    font-weight: 700; font-size: 11px; letter-spacing: .04em; padding: 5px 10px; cursor: pointer; white-space: nowrap;
+  }
+  .btn-ghost:hover { border-color: var(--accent); background: var(--surface-hi); }
+  .linkbtn { background: none; border: 0; padding: 0; color: var(--muted); font-size: 11px; text-decoration: underline; cursor: pointer; }
+  .linkbtn:hover { color: var(--accent); }
+
+  .empty-state { margin-top: 10px; padding: 40px 20px; text-align: center; color: var(--muted); }
+
+  /* ---------- Statuszeile ---------- */
+  footer { border-top: 1px solid var(--border); margin-top: 14px; padding-top: 8px; display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: 12px; }
+  .dot { color: var(--muted); font-size: 13px; }
+  footer .credit { margin-left: auto; text-align: right; }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 980px) {
+    main { grid-template-columns: 1fr; }
+    .side { position: static; height: auto; min-height: 0; }
+    #list { height: 34vh; flex: none; }
+    .cards, .grid2, .grid3 { grid-template-columns: 1fr; }
+    header img { height: 40px; }
+    header .subtitle { display: none; }
+    h1 { font-size: 17px; }
+    footer { flex-wrap: wrap; }
+    footer .credit { margin-left: 0; width: 100%; text-align: left; }
+    .foot .small.grow { flex-basis: 100%; order: 3; }
+  }
+</style>
+</head>
+<body>
+<div class="nebula" aria-hidden="true"><i class="n1"></i><i class="n2"></i><i class="n3"></i><i class="n4"></i><i class="n5"></i></div>
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<div class="app">
+  <header>
+    <img src="data:image/png;base64,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" alt="LincolnSoft">
+    <div class="brand">
+      <h1>EVE INVENTION HELPER</h1>
+      <div class="subtitle">Tech I → Tech II &nbsp;·&nbsp; Datacores &nbsp;·&nbsp; Skills &nbsp;·&nbsp; Bauteile</div>
+    </div>
+  </header>
+  <div class="rule"></div>
+
+  <main>
+    <section class="card side">
+      <h3>Blueprints</h3>
+      <label class="hint" for="search">Suchen – T1, T2 oder Produkt</label>
+      <input id="search" type="search" autocomplete="off" spellcheck="false" placeholder="z. B. hammerhead, warp disruptor …" disabled>
+      <ul id="list" role="listbox" aria-label="Inventierbare Blueprints"></ul>
+      <div class="listfoot">
+        <span id="count">–</span>
+        <button class="linkbtn" id="reset" type="button">Skills zurücksetzen</button>
+      </div>
+    </section>
+
+    <section class="detail">
+      <h2 id="title">Bitte Blueprint wählen</h2>
+      <div class="subtitle" id="sub">Links suchen und auswählen</div>
+
+      <div class="card empty-state" id="empty">Links einen Blueprint wählen – oben suchen, Enter wählt den ersten Treffer.</div>
+
+      <div class="cards" id="cards" hidden>
+        <div class="card">
+          <h3>Benötigte Datacores</h3>
+          <div id="cores"></div>
+          <div class="foot">
+            <label class="k" for="jobs">Anzahl Jobs</label>
+            <input id="jobs" type="number" min="1" max="999" step="1" value="1">
+            <span class="grow"></span>
+            <button class="btn-ghost" id="copy-cores" type="button">MULTIBUY KOPIEREN</button>
+          </div>
+          <div class="small" id="cores-hint" style="margin-top:6px"></div>
+        </div>
+
+        <div class="card">
+          <h3>Invention</h3>
+          <div class="row"><span class="k">Input</span><span class="v name" id="i-t1">–</span></div>
+          <div class="row"><span class="k">Zeit (Basis)</span><span class="v" id="i-time">–</span></div>
+          <div class="row"><label class="k" for="decryptor">Decryptor</label><select id="decryptor"></select></div>
+          <div class="row"><span class="k">Basis-Chance</span><span class="v" id="i-base">–</span></div>
+          <div class="row"><span class="k">Deine Erfolgschance</span><span class="v best" id="r-chance">–</span></div>
+          <div class="row"><span class="k">Ø Jobs pro T2-BPC</span><span class="v" id="r-attempts">–</span></div>
+          <div class="row"><span class="k">Ergebnis-BPC</span><span class="v" id="r-result">–</span></div>
+        </div>
+
+        <div class="card">
+          <h3>Skills</h3>
+          <div class="small">Invention – deine Level</div>
+          <div id="skills"></div>
+          <div class="divider"></div>
+          <div class="small">Bau des T2-Items – Mindestlevel</div>
+          <div id="build" class="grid2"></div>
+        </div>
+
+        <div class="card">
+          <h3 id="bm-title">Bauteile</h3>
+          <div id="bm"></div>
+          <div class="foot">
+            <span class="small grow">ohne Struktur-/Rig-Boni</span>
+            <button class="btn-ghost" id="copy-bm" type="button">MULTIBUY KOPIEREN</button>
+          </div>
+        </div>
+
+        <div class="card wide">
+          <h3>Materialien für die Bauteile</h3>
+          <div class="foot" style="margin:0 0 8px">
+            <label class="k" for="compme">ME der Komponenten-BPs</label>
+            <input id="compme" type="number" min="0" max="10" step="1" value="10">
+            <span class="small grow">Was selbst gebaut wird, legst du in der Bauteile-Karte fest (Spalte BAU).</span>
+            <button class="btn-ghost" id="copy-raw" type="button">MULTIBUY KOPIEREN</button>
+          </div>
+          <div id="raw" class="grid3"></div>
+          <div class="small" id="raw-hint" style="margin-top:6px"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span class="dot" id="dot">●</span>
+    <span id="status">Lade Daten …</span>
+    <span class="credit">Daten: <a href="https://www.fuzzwork.co.uk/dump/" target="_blank" rel="noopener">Fuzzwork SDE</a> · EVE Online © CCP hf.</span>
+  </footer>
+</div>
+
+<script>
+"use strict";
+
+// ---------------------------------------------------------------- Konstanten
+// Name, Wahrscheinlichkeits-Mod, Runs, ME, TE
+const DECRYPTORS = [
+  ["Kein Decryptor", 0, 0, 0, 0],
+  ["Accelerant", 0.20, 1, 2, 10],
+  ["Attainment", 0.80, 4, -1, 4],
+  ["Augmentation", -0.40, 9, -2, 2],
+  ["Optimized Attainment", 0.90, 2, 1, -2],
+  ["Optimized Augmentation", -0.10, 7, 2, 0],
+  ["Parity", 0.50, 3, 1, -2],
+  ["Process", 0.10, 0, 3, 6],
+  ["Symmetry", 0, 2, 1, 8],
+];
+const BASE_ME = 2, BASE_TE = 4;
+const STATUS = { ok: "var(--pos)", busy: "var(--accent)", warn: "var(--warn)", err: "var(--neg)" };
+const TAG_LABEL = { S: "SALVAGE", P: "PI", K: "KAUFEN" };
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmt = (n) => Number(n).toLocaleString("de-DE");
+const fmt1 = (n) => Number(n).toLocaleString("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const fmt2 = (n) => Number(n).toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const round2 = (x) => Math.round(x * 100) / 100;
+
+// localStorage kann in privaten Fenstern fehlen oder werfen -> immer abfangen
+const store = {
+  get(key, fallback) { try { const v = localStorage.getItem("eih." + key); return v == null ? fallback : JSON.parse(v); } catch { return fallback; } },
+  set(key, value) { try { localStorage.setItem("eih." + key, JSON.stringify(value)); } catch { /* egal */ } },
+};
+
+// ---------------------------------------------------------------- Zustand
+let NAMES = {}, TAGS = {}, MB = {}, ENTRIES = [], filtered = [], current = null, selIdx = -1, generated = "";
+let levels = store.get("skills", {});
+let buildSel = store.get("build", {});
+let lists = { cores: [], bm: [], raw: [] };
+
+const name = (id) => (id == null ? "–" : NAMES[id] ?? `#${id}`);
+const isEncryption = (id) => /encryption/i.test(name(id));
+
+function setStatus(text, level = "ok") {
+  $("dot").style.color = STATUS[level] || "var(--muted)";
+  const s = $("status");
+  s.textContent = text;
+  s.style.color = level === "err" || level === "warn" ? STATUS[level] : "var(--muted)";
+}
+
+function fmtTime(sec) {
+  if (sec == null) return "–";
+  const d = Math.floor(sec / 86400), h = Math.floor(sec % 86400 / 3600), m = Math.floor(sec % 3600 / 60), s = sec % 60;
+  const p = (n) => String(n).padStart(2, "0");
+  return (d ? `${d}d ` : "") + `${p(h)}:${p(m)}:${p(s)}`;
+}
+
+// ---------------------------------------------------------------- Rechnen (wie Desktop)
+function chanceFor(base, sci1, sci2, enc, mod) {
+  // Offizielle Formel: base × (1 + (Sci1+Sci2)/30 + Enc/40) × (1 + Decryptor)
+  return Math.min(1, base * (1 + (sci1 + sci2) / 30 + enc / 40) * (1 + mod));
+}
+const withME = (runs, qty, me) => Math.max(runs, Math.ceil(round2(runs * qty * (1 - me / 100))));
+
+function defaultBuild(e, id) {
+  // Standard: T2-Komponenten bauen, R.A.M. und das T1-Item kaufen
+  if (id === e.t1p) return false;
+  return !name(id).startsWith("R.A.M.");
+}
+const wantsBuild = (e, id) => (id in buildSel ? !!buildSel[id] : defaultBuild(e, id));
+
+// ---------------------------------------------------------------- Sternenfeld
+(() => {
+  const cv = $("sky"), ctx = cv.getContext("2d");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let stars = [], w = 0, h = 0;
+  function rand(seed) { return () => (seed = (seed * 16807) % 2147483647) / 2147483647; }
+  function build() {
+    const dpr = window.devicePixelRatio || 1;
+    w = innerWidth; h = innerHeight;
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const r = rand(42), tints = ["255,255,255", "227,241,255", "194,226,255", "159,210,255", "127,207,255"];
+    const n = Math.max(120, Math.round(420 * (w * h) / (1920 * 1080)));
+    stars = Array.from({ length: n }, () => {
+      const roll = r();
+      return {
+        x: r() * w, y: r() * h, tint: tints[Math.floor(r() * tints.length)],
+        size: roll < .72 ? 1 : roll < .95 ? 1.6 : 2.4,
+        bright: roll >= .95,
+        a: roll < .72 ? .25 + r() * .45 : .55 + r() * .4,
+        tw: r() < .08 ? .6 + r() * 1.6 : 0, ph: r() * Math.PI * 2,
+      };
+    });
+    draw(0);
+  }
+  function draw(t) {
+    ctx.clearRect(0, 0, w, h);
+    for (const s of stars) {
+      const a = s.tw ? s.a * (.55 + .45 * Math.sin(t / 1000 * s.tw + s.ph)) : s.a;
+      if (s.bright) {
+        const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, 9);
+        g.addColorStop(0, "rgba(127,207,255,.35)"); g.addColorStop(1, "rgba(127,207,255,0)");
+        ctx.fillStyle = g; ctx.fillRect(s.x - 9, s.y - 9, 18, 18);
+        ctx.strokeStyle = `rgba(${s.tint},${a * .45})`; ctx.lineWidth = .6;
+        ctx.beginPath(); ctx.moveTo(s.x - 10, s.y); ctx.lineTo(s.x + 10, s.y); ctx.moveTo(s.x, s.y - 10); ctx.lineTo(s.x, s.y + 10); ctx.stroke();
+      }
+      ctx.fillStyle = `rgba(${s.tint},${a})`;
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.size / 2, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  let last = 0, tm = 0;
+  function loop(t) { if (t - last > 120) { draw(t); last = t; } requestAnimationFrame(loop); }
+  addEventListener("resize", () => { clearTimeout(tm); tm = setTimeout(build, 150); });
+  build();
+  if (!reduce) requestAnimationFrame(loop);
+})();
+
+// ---------------------------------------------------------------- Laden
+async function init() {
+  const sel = $("decryptor");
+  sel.innerHTML = DECRYPTORS.map((d, i) => `<option value="${i}">${esc(d[0])}</option>`).join("");
+  sel.value = String(Math.max(0, DECRYPTORS.findIndex((d) => d[0] === store.get("decryptor", DECRYPTORS[0][0]))));
+  $("jobs").value = store.get("jobs", 1);
+  $("compme").value = store.get("compme", 10);
+
+  setStatus("Lade Daten …", "busy");
+  try {
+    const res = await fetch("invention.json", { cache: "no-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    NAMES = data.names; TAGS = data.tags || {}; MB = data.mb || {};
+    generated = data.generated ? new Date(data.generated).toLocaleDateString("de-DE") : "?";
+    ENTRIES = data.bps.map((b) => {
+      const main = b.p ? name(b.p) : name(b.t2);
+      return { ...b, main, from: name(b.t1), search: [name(b.t1), name(b.t2), name(b.p), name(b.t1p), main].join(" ").toLowerCase() };
+    });
+  } catch (e) {
+    setStatus(`Daten konnten nicht geladen werden (${e.message})`, "err");
+    $("list").innerHTML = `<li class="empty">invention.json fehlt oder ist defekt.</li>`;
+    return;
+  }
+
+  $("search").disabled = false;
+  $("search").focus();
+  applyFilter();
+  openFromHash() || setStatus(`Bereit · ${fmt(ENTRIES.length)} Blueprints · Datenstand ${generated}`);
+}
+
+// ---------------------------------------------------------------- Liste
+function applyFilter() {
+  const terms = $("search").value.toLowerCase().split(/\s+/).filter(Boolean);
+  filtered = ENTRIES.filter((e) => terms.every((t) => e.search.includes(t)));
+  selIdx = current ? filtered.indexOf(current) : -1;
+  $("list").innerHTML = filtered.length
+    ? filtered.map((e, i) => `<li role="option" data-i="${i}" aria-selected="${i === selIdx}">${esc(e.main)}<span class="from">&nbsp;&nbsp;←&nbsp;&nbsp;${esc(e.from)}</span></li>`).join("")
+    : `<li class="empty">Keine inventierbaren Blueprints gefunden.</li>`;
+  $("count").textContent = `${fmt(filtered.length)} von ${fmt(ENTRIES.length)} Blueprints`;
+}
+
+function select(i, scroll = true) {
+  if (i < 0 || i >= filtered.length) return;
+  const list = $("list");
+  list.querySelector('[aria-selected="true"]')?.setAttribute("aria-selected", "false");
+  selIdx = i;
+  const li = list.querySelector(`[data-i="${i}"]`);
+  li?.setAttribute("aria-selected", "true");
+  if (scroll) li?.scrollIntoView({ block: "nearest" });
+  current = filtered[i];
+  history.replaceState(null, "", `#${current.t2}`);
+  showEntry();
+}
+
+function openFromHash() {
+  const id = Number(location.hash.slice(1));
+  if (!id) return false;
+  const i = filtered.findIndex((e) => e.t2 === id || e.t1 === id || e.p === id);
+  if (i < 0) return false;
+  select(i);
+  return true;
+}
+
+$("list").addEventListener("click", (ev) => {
+  const li = ev.target.closest("li[data-i]");
+  if (li) select(Number(li.dataset.i), false);
+});
+$("search").addEventListener("input", applyFilter);
+$("search").addEventListener("keydown", (ev) => {
+  if (ev.key === "ArrowDown") { ev.preventDefault(); select(Math.min(selIdx + 1, filtered.length - 1)); }
+  else if (ev.key === "ArrowUp") { ev.preventDefault(); select(Math.max(selIdx - 1, 0)); }
+  else if (ev.key === "Enter") { ev.preventDefault(); select(selIdx >= 0 ? selIdx : 0); }
+});
+addEventListener("hashchange", openFromHash);
+
+// ---------------------------------------------------------------- Detail
+function showEntry() {
+  const e = current;
+  $("empty").hidden = true;
+  $("cards").hidden = false;
+  $("title").textContent = e.main;
+  $("sub").textContent = `aus ${e.from}  ·  TypeID ${e.t2}`;
+  document.title = `${e.main} – EVE Invention Helper`;
+  $("i-t1").textContent = name(e.t1);
+  $("i-t1").title = name(e.t1);
+  $("i-time").textContent = fmtTime(e.t);
+  $("i-base").textContent = e.c != null ? `${fmt1(e.c * 100)} %` : "–";
+
+  // Invention-Skills: Science zuerst, Encryption zuletzt
+  const skills = [...e.s].sort((a, b) => (isEncryption(a[0]) - isEncryption(b[0])) || name(a[0]).localeCompare(name(b[0])));
+  $("skills").innerHTML = skills.length ? skills.map(([id, req]) => `
+    <div class="row">
+      <span class="k" title="${esc(name(id))}">${esc(name(id))}</span>
+      <span class="req">≥ ${req}</span>
+      <input class="lvl" type="number" min="0" max="5" step="1" data-skill="${id}" value="${levels[id] ?? 0}" aria-label="Level ${esc(name(id))}">
+      <span class="state" data-state="${id}"></span>
+    </div>`).join("") : `<div class="placeholder">–</div>`;
+
+  const build = [...e.b].sort((a, b) => name(a[0]).localeCompare(name(b[0])));
+  $("build").innerHTML = build.length ? build.map(([id, lvl]) =>
+    `<div class="row"><span class="k">${esc(name(id))}</span><span class="v">Lvl ${lvl}</span></div>`
+  ).join("") : `<div class="placeholder">–</div>`;
+
+  recalc();
+}
+
+function tagHtml(id, direct = false) {
+  const t = TAGS[id] || (direct ? "K" : null);
+  return t ? `<span class="tag ${t}">${TAG_LABEL[t]}</span>` : "";
+}
+
+function recalc() {
+  const e = current;
+  if (!e) return;
+
+  // Skills & Chance
+  const sci = [];
+  let enc = 0, missing = 0;
+  for (const [id, req] of e.s) {
+    const lvl = levels[id] ?? 0;
+    if (isEncryption(id)) enc = lvl; else sci.push(lvl);
+    const st = document.querySelector(`[data-state="${id}"]`);
+    if (st) { st.textContent = lvl >= req ? "✔" : "fehlt"; st.className = `state ${lvl >= req ? "pos" : "neg"}`; }
+    if (lvl < req) missing++;
+  }
+  while (sci.length < 2) sci.push(0);
+
+  const decIdx = Number($("decryptor").value) || 0;
+  const [decName, mod, dRuns, dMe, dTe] = DECRYPTORS[decIdx];
+  const chance = e.c ? chanceFor(e.c, sci[0], sci[1], enc, mod) : null;
+  const runs = e.r + dRuns, me = BASE_ME + dMe;
+
+  $("r-chance").textContent = chance ? `${fmt1(chance * 100)} %` : "–";
+  $("r-attempts").textContent = chance ? fmt2(1 / chance) : "–";
+  $("r-result").textContent = `${runs} Runs · ME ${me} · TE ${BASE_TE + dTe}`;
+
+  // Datacores – volle Item-Namen wie im Markt
+  const jobs = Math.max(1, Math.min(999, parseInt($("jobs").value, 10) || 1));
+  lists.cores = [...e.m].sort((a, b) => name(a[0]).localeCompare(name(b[0]))).map(([id, q]) => [name(id), q]);
+  const coreRows = lists.cores.map(([n, q]) =>
+    `<tr><td class="nm">${esc(n)}</td><td class="v dim">${q}</td><td class="v big">${fmt(q * jobs)}</td></tr>`);
+  if (decIdx) {
+    lists.cores.push([`${decName} Decryptor`, 1]);
+    coreRows.push(`<tr class="sep"><td class="k">${esc(decName)} Decryptor</td><td class="v dim">1</td><td class="v big">${fmt(jobs)}</td></tr>`);
+  }
+  $("cores").innerHTML = coreRows.length
+    ? `<table><tr><th></th><th>pro Job</th><th>für ${jobs} Job${jobs !== 1 ? "s" : ""}</th></tr>${coreRows.join("")}</table>`
+    : `<div class="placeholder">–</div>`;
+  $("cores-hint").textContent = chance
+    ? `1 Job = 1 Invention-Versuch. ${jobs} Job(s) bei ${fmt1(chance * 100)} % ergeben im Schnitt ${fmt1(jobs * chance)} T2-BPC(s) – mindestens eine mit ${fmt1((1 - (1 - chance) ** jobs) * 100)} % Wahrscheinlichkeit.`
+    : "";
+
+  // Bauteile – Gesamtmenge für alle Runs der Ergebnis-BPC
+  $("bm-title").textContent = `Bauteile  ·  ${runs} Runs  ·  ME ${me}`;
+  const bm = [...(e.bm || [])].sort((a, b) => name(a[0]).localeCompare(name(b[0])));
+  const need = bm.map(([id, q]) => [id, q, withME(runs, q, me)]);
+  lists.bm = need.map(([id, , t]) => [name(id), t]);
+  $("bm").innerHTML = need.length ? `<table>
+      <tr><th style="width:1%">Bau</th><th style="text-align:left;padding-left:8px"></th><th>pro Run</th><th>gesamt</th></tr>
+      ${need.map(([id, q, total]) => `<tr>
+        <td>${MB[id] ? `<input type="checkbox" data-build="${id}" ${wantsBuild(e, id) ? "checked" : ""} title="selbst bauen" aria-label="${esc(name(id))} selbst bauen">` : ""}</td>
+        <td style="text-align:left;padding-left:8px;white-space:normal"><span class="k">${esc(name(id))}</span>${tagHtml(id)}</td>
+        <td class="v dim">${fmt(q)}</td><td class="v">${fmt(total)}</td></tr>`).join("")}
+    </table>` : `<div class="placeholder">–</div>`;
+
+  renderRaw(e, need);
+
+  if (missing) setStatus(`${missing} Invention-Skill(s) unter Mindestlevel`, "warn");
+  else setStatus(`Bereit · ${name(e.t2)} · Datenstand ${generated}`);
+}
+
+function renderRaw(e, need) {
+  const cme = Math.max(0, Math.min(10, parseInt($("compme").value, 10) || 0));
+  const raw = new Map(), direct = new Map(), built = [];
+  for (const [id, , total] of need) {
+    const src = MB[id];
+    if (src && wantsBuild(e, id)) {
+      const [out, mats] = src;
+      const jobs = Math.ceil(total / out);
+      built.push(`${name(id)} (${jobs} Run${jobs !== 1 ? "s" : ""})`);
+      for (const [m, q] of mats) raw.set(m, (raw.get(m) || 0) + withME(jobs, q, cme));
+    } else {
+      direct.set(id, (direct.get(id) || 0) + total);
+    }
+  }
+  // Reihenfolge: aufgelöste Rohstoffe · Salvage · PI · kaufen
+  const rank = (id, isDirect) => (TAGS[id] === "S" ? 1 : TAGS[id] === "P" ? 2 : isDirect ? 3 : 0);
+  const items = [...[...raw].map(([id, q]) => [id, q, false]), ...[...direct].map(([id, q]) => [id, q, true])]
+    .sort((a, b) => rank(a[0], a[2]) - rank(b[0], b[2]) || name(a[0]).localeCompare(name(b[0])));
+  lists.raw = items.map(([id, q]) => [name(id), q]);
+
+  const perCol = Math.ceil(items.length / 3) || 1;
+  const cols = [0, 1, 2].map((c) => items.slice(c * perCol, (c + 1) * perCol));
+  $("raw").innerHTML = items.length ? cols.map((col) => `<div>${col.map(([id, q, d]) =>
+    `<div class="row"><span class="k" title="${esc(name(id))}">${esc(name(id))}${tagHtml(id, d)}</span><span class="v">${fmt(q)}</span></div>`
+  ).join("")}</div>`).join("") : `<div class="placeholder">–</div>`;
+
+  const used = new Set(items.map(([id, , d]) => TAGS[id] || (d ? "K" : "")));
+  let hint = `Selbst gebaut: ${built.length ? built.join(", ") : "–"}  ·  Komponenten-ME ${cme}`;
+  if (used.has("S")) hint += "  ·  SALVAGE = Bergungsmaterial aus Wracks, nicht baubar";
+  if (used.has("P")) hint += "  ·  PI = Planetary Interaction";
+  if (used.has("K")) hint += "  ·  KAUFEN = nicht baubar bzw. abgewählt";
+  $("raw-hint").textContent = hint;
+}
+
+// ---------------------------------------------------------------- Eingaben
+$("skills").addEventListener("input", (ev) => {
+  const inp = ev.target.closest("input[data-skill]");
+  if (!inp) return;
+  levels[inp.dataset.skill] = Math.max(0, Math.min(5, parseInt(inp.value, 10) || 0));
+  store.set("skills", levels);
+  recalc();
+});
+$("skills").addEventListener("change", (ev) => {
+  const inp = ev.target.closest("input[data-skill]");
+  if (inp) inp.value = levels[inp.dataset.skill] ?? 0;
+});
+$("bm").addEventListener("change", (ev) => {
+  const cb = ev.target.closest("input[data-build]");
+  if (!cb) return;
+  buildSel[cb.dataset.build] = cb.checked;
+  store.set("build", buildSel);
+  recalc();
+});
+$("decryptor").addEventListener("change", () => { store.set("decryptor", DECRYPTORS[$("decryptor").value][0]); recalc(); });
+$("jobs").addEventListener("input", () => { store.set("jobs", Math.max(1, parseInt($("jobs").value, 10) || 1)); recalc(); });
+$("compme").addEventListener("input", () => { store.set("compme", Math.max(0, Math.min(10, parseInt($("compme").value, 10) || 0))); recalc(); });
+$("reset").addEventListener("click", () => { levels = {}; store.set("skills", levels); if (current) showEntry(); });
+
+// Multibuy: Name<TAB>Menge, eine Zeile pro Item
+async function copyList(items, btn, label) {
+  if (!items.length) return;
+  const text = items.map(([n, q]) => `${n}\t${q}`).join("\n");
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const ta = Object.assign(document.createElement("textarea"), { value: text });
+    document.body.append(ta); ta.select(); document.execCommand("copy"); ta.remove();
+  }
+  setStatus(`Multibuy kopiert · ${label} · ${items.length} Positionen – im Markt unter Multibuy → Einfügen`);
+  btn.textContent = "✔ KOPIERT";
+  setTimeout(() => (btn.textContent = "MULTIBUY KOPIEREN"), 1500);
+}
+$("copy-cores").addEventListener("click", (ev) => {
+  const jobs = Math.max(1, parseInt($("jobs").value, 10) || 1);
+  copyList(lists.cores.map(([n, q]) => [n, q * jobs]), ev.currentTarget, `Datacores für ${jobs} Job(s)`);
+});
+$("copy-bm").addEventListener("click", (ev) => copyList(lists.bm, ev.currentTarget, "Bauteile"));
+$("copy-raw").addEventListener("click", (ev) => copyList(lists.raw, ev.currentTarget, "Materialien"));
+
+init();
+</script>
+</body>
+</html>
