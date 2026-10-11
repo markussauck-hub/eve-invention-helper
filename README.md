@@ -47,6 +47,7 @@ Per Doppelklick (`file://`) funktioniert die Seite nicht, weil der Browser dann
 - Tags: **SALVAGE** (Bergungsmaterial), **PI** (Planetary Interaction), **KAUFEN** (nicht baubar bzw. abgewählt).
 - Skill-Level, Decryptor, Anzahl Jobs, Komponenten-ME und Bau-Auswahl werden im Browser gespeichert.
 - Oben mittig: Wechsel zum [EVE Price Checker](https://markussauck-hub.github.io/eve-price-checker/) – das T2-Produkt wird gleich mitgenommen.
+- Header rechts: **MUSIK** (leise Weltraum-Ambient) und **SOUNDS** (Rechner-Geräusche, Kopier-Sound), per Web Audio erzeugt – gleiche Engine und gemeinsame Einstellung wie im Price Checker.
 - Jeder Blueprint hat einen Direktlink, z. B. `…/#39581` für Hammerhead II.
 - Struktur- und Rig-Boni sind nicht eingerechnet.
 
