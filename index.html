@@ -423,6 +423,8 @@
   .toolnav { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
   .toolnav .btn-ghost { display: inline-flex; align-items: center; gap: 8px; padding: 9px 20px; font-size: 11px; }
   .toolnav .btn-ghost .arrow { font-size: 14px; line-height: 1; }
+  .toolnav { display: flex; gap: 10px; white-space: nowrap; }
+  @media (max-width: 980px) { .toolnav { flex-direction: column; } }
   @media (max-width: 980px) {
     header { flex-wrap: wrap; }
     .toolnav { position: static; transform: none; order: 3; width: 100%; }
@@ -490,6 +492,7 @@
       <h1>EVE INVENTION HELPER</h1>
       <div class="subtitle">Tech I → Tech II &nbsp;·&nbsp; Datacores &nbsp;·&nbsp; Skills &nbsp;·&nbsp; Bauteile</div>
       <nav class="toolnav" aria-label="LincolnSoft-Tools">
+        <a class="btn-ghost" id="to-home" href="https://lincolnsoft.de/" title="Zurück zur Lincolnsoft Homestation"><span class="arrow">⌂</span>BACK TO HOMESTATION</a>
         <a class="btn-ghost" id="to-tool" href="https://markussauck-hub.github.io/eve-price-checker/" title="Zum EVE Price Checker wechseln – das aktuelle Item wird mitgenommen"><span class="arrow">⇄</span>EVE PRICE CHECKER</a>
       </nav>
     </div>
@@ -599,6 +602,7 @@
 const ON_LINCOLNSOFT = /(^|\.)lincolnsoft\.de$/.test(location.hostname);
 const TOOL_URL = ON_LINCOLNSOFT ? "/price-checker/" : "https://markussauck-hub.github.io/eve-price-checker/";
 document.getElementById("to-tool")?.setAttribute("href", TOOL_URL);
+if (ON_LINCOLNSOFT) document.getElementById("to-home")?.setAttribute("href", "/");
 const DECRYPTORS = [
   ["Kein Decryptor", 0, 0, 0, 0],
   ["Accelerant", 0.20, 1, 2, 10],
