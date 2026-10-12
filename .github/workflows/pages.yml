@@ -30,7 +30,7 @@ jobs:
         run: python build_data.py --out site/invention.json
 
       - name: Seite zusammenstellen
-        run: cp index.html site/
+        run: cp index.html site/ && cp -r fonts site/
 
       - uses: actions/upload-pages-artifact@v3
         with:
