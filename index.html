@@ -576,6 +576,12 @@
 
         <div class="card">
           <h3 id="bm-title">Bauteile</h3>
+          <div class="foot" style="margin:0 0 8px">
+            <label class="k" for="bmruns">Runs</label>
+            <input id="bmruns" type="number" min="1" max="100000" step="1" placeholder="BPC" title="Leer = so viele Runs, wie die T2-BPC aus der Invention hat">
+            <button class="btn-ghost" id="bmruns-reset" type="button" title="Zurück auf die Runs der T2-BPC" hidden>BPC</button>
+            <span class="small grow" id="bmruns-hint"></span>
+          </div>
           <div id="bm"></div>
           <div class="foot">
             <span class="small grow">ohne Struktur-/Rig-Boni</span>
@@ -737,6 +743,7 @@ async function init() {
   sel.value = String(Math.max(0, DECRYPTORS.findIndex((d) => d[0] === store.get("decryptor", DECRYPTORS[0][0]))));
   $("jobs").value = store.get("jobs", 1);
   $("compme").value = store.get("compme", 10);
+  $("bmruns").value = store.get("bmruns", 0) || "";
 
   setStatus("Lade Daten …", "busy");
   try {
@@ -889,9 +896,15 @@ function recalc() {
     : "";
 
   // Bauteile – Gesamtmenge für alle Runs der Ergebnis-BPC
-  $("bm-title").textContent = `Bauteile  ·  ${runs} Runs  ·  ME ${me}`;
+  // Runs frei wählbar; leer = Runs der T2-BPC
+  const custom = parseInt($("bmruns").value, 10);
+  const bmRuns = custom >= 1 ? Math.min(100000, custom) : runs;
+  $("bmruns").placeholder = String(runs);
+  $("bmruns-reset").hidden = !(custom >= 1);
+  $("bmruns-hint").textContent = custom >= 1 ? `T2-BPC hat ${runs} Runs` : "wie die T2-BPC";
+  $("bm-title").textContent = `Bauteile  ·  ${bmRuns} Runs  ·  ME ${me}`;
   const bm = [...(e.bm || [])].sort((a, b) => name(a[0]).localeCompare(name(b[0])));
-  const need = bm.map(([id, q]) => [id, q, withME(runs, q, me)]);
+  const need = bm.map(([id, q]) => [id, q, withME(bmRuns, q, me)]);
   lists.bm = need.map(([id, , t]) => [name(id), t]);
   $("bm").innerHTML = need.length ? `<table>
       <tr><th style="width:1%">Bau</th><th style="text-align:left;padding-left:8px"></th><th>pro Run</th><th>gesamt</th></tr>
@@ -962,6 +975,8 @@ $("bm").addEventListener("change", (ev) => {
 });
 $("decryptor").addEventListener("change", () => { store.set("decryptor", DECRYPTORS[$("decryptor").value][0]); recalc(); });
 $("jobs").addEventListener("input", () => { store.set("jobs", Math.max(1, parseInt($("jobs").value, 10) || 1)); recalc(); });
+$("bmruns").addEventListener("input", () => { store.set("bmruns", parseInt($("bmruns").value, 10) || 0); recalc(); });
+$("bmruns-reset").addEventListener("click", () => { $("bmruns").value = ""; store.set("bmruns", 0); recalc(); });
 $("compme").addEventListener("input", () => { store.set("compme", Math.max(0, Math.min(10, parseInt($("compme").value, 10) || 0))); recalc(); });
 $("reset").addEventListener("click", () => { levels = {}; store.set("skills", levels); if (current) showEntry(); });
 
